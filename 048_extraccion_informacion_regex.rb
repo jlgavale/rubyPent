@@ -20,4 +20,9 @@ puts URI.extract(string, ["http", "https"])
 
 =end
 
-require 'net/'
+require 'net/http'
+#puts Net::HTTP.get(URI.parse("https://twitter.com/xxxxx")).scan(/https?:\/\/[\S]+/)
+
+require 'net/http'
+email_regex = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i
+puts Net::HTTP.get(URI.parse("https://twitter.com/xxxxx")).scan(email_regex).uniq
